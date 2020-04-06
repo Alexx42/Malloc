@@ -33,6 +33,7 @@ typedef long align;
 typedef union			block {
 	struct head_block{
 		size_t			size;
+		size_t			used;
 		union block		*next;
 	} h_block;
 	align				x;
@@ -59,7 +60,7 @@ extern f_list			*g_flist;
 
 
 void					*allocate_new_block(size_t size);
-
+m_block					*find_corresponding_block(void *ptr);
 
 
 void					dump_block(void);
@@ -71,3 +72,7 @@ void					*write_meta_data(void *ptr, size_t size);
 
 
 void					delete_element_f_list(void *ptr);
+void					add_element_f_list(void *ptr, size_t size, size_t size_meta);
+
+
+int							valid_current_block(m_block *block, size_t size);

@@ -18,24 +18,35 @@ void		delete_element_f_list(void *ptr) {
 	prev->f.next = tmp->f.next;
 }
 
-// static int	is_in_f_list(void *ptr) {
-// 	f_list *tmp;
+static int	is_in_f_list(void *ptr) {
+	f_list *tmp;
 
-// 	tmp = g_flist;
-// 	while (tmp) {
-// 		if ((void *)tmp == ptr)
-// 			return EXIT_SUCCESS;
-// 		tmp = tmp->f.next;
-// 	}
-// 	return EXIT_FAILURE;
-// }
+	tmp = g_flist;
+	while (tmp) {
+		if ((void *)tmp == ptr)
+			return EXIT_SUCCESS;
+		tmp = tmp->f.next;
+	}
+	return EXIT_FAILURE;
+}
 
-// void		add_element_f_list(void *ptr, size_t size) {
-// 	f_list		*node;
+void		add_element_f_list(void *ptr, size_t size, size_t size_meta) {
+	f_list		*node;
+	f_list		*fast;
 
-// 	node = (void *)ptr + S_ALLOC(m_data) + size;
-// 	if (is_in_f_list((void *)node) == EXIT_FAILURE || node->f.data.d.magic ==  MAGIC)
-// 		return ;
-// 	node->f.data.d.magic = MAGIC;
-// 	node->f.data.d.size = 
-// }
+	node = (f_list *)((void *)ptr + S_ALLOC(f_list) + size);
+	if (is_in_f_list((void *)node) == EXIT_SUCCESS)
+		return ;
+	node->f.data.d.magic = MAGIC;
+	node->f.data.d.size = size_meta;
+	node->f.next = NULL;
+	if (g_flist == NULL) {
+		g_flist = node;
+		return ;
+	}
+	fast = g_flist;
+	while (fast->f.next)
+		fast = fast->f.next;
+	fast->f.next = node;
+	return ;
+}

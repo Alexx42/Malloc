@@ -17,13 +17,15 @@ void		dump_block(void) {
 		// data = (m_data *)((void *)g_block + S_ALLOC(m_block));
 		j  = 0;
 		k = 0;
-		while (k < b->h_block.size) {
-			if (tmp->f.data.d.magic == MAGIC) {
-				printf("\tCHUNCK %d: \n", ++j);
-				printf("\t\tSize: %zu bytes\n", tmp->f.data.d.size);
+		if (b == find_corresponding_block((void *)tmp)) {
+			while (k < b->h_block.size) {
+				if (tmp->f.data.d.magic == MAGIC) {
+					printf("\tCHUNCK %d: \n", ++j);
+					printf("\t\tSize: %zu bytes\n", tmp->f.data.d.size);
+				}
+				k = (S_ALLOC(f_list) + tmp->f.data.d.size);
+				tmp = (f_list *)((void *)tmp + k);
 			}
-			k = (S_ALLOC(f_list) + tmp->f.data.d.size);
-			tmp = (f_list *)((void *)tmp + k);
 		}
 		printf("----------------------------------------------------------\n");
 		b = b->h_block.next;

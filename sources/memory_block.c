@@ -6,7 +6,7 @@ static size_t		size_to_allocate(size_t size) {
 	} else if (size <= SMALL_MAX_SIZE) {
 		return SMALL_ZONE;
 	}
-	return size;
+	return size + S_ALLOC(f_list) + S_ALLOC(m_block);
 }
 
 void				*allocate_new_block(size_t size) {

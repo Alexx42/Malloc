@@ -59,6 +59,8 @@ extern m_block			*g_block;
 extern f_list			*g_flist;
 
 
+void	my_free(void *ptr);
+
 void					*allocate_new_block(size_t size);
 m_block					*find_corresponding_block(void *ptr);
 
@@ -72,7 +74,7 @@ void					*write_meta_data(void *ptr, size_t size);
 
 
 void					delete_element_f_list(void *ptr);
-void					add_element_f_list(void *ptr, size_t size, size_t size_meta);
+void					add_element_f_list(void *ptr, size_t size);
 
 
 int							valid_current_block(m_block *block, size_t size);

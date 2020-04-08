@@ -5,6 +5,7 @@ void		delete_element_f_list(void *ptr) {
 	f_list		*prev;
 
 	tmp = g_flist;
+	prev = NULL;
 	if (tmp != NULL && (void *)tmp == ptr) {
 		g_flist = tmp->f.next;
 		return ;
@@ -30,15 +31,15 @@ static int	is_in_f_list(void *ptr) {
 	return EXIT_FAILURE;
 }
 
-void		add_element_f_list(void *ptr, size_t size, size_t size_meta) {
+void		add_element_f_list(void *ptr, size_t size) {
 	f_list		*node;
 	f_list		*fast;
 
-	node = (f_list *)((void *)ptr + S_ALLOC(f_list) + size);
+	node = (f_list *)ptr;
 	if (is_in_f_list((void *)node) == EXIT_SUCCESS)
 		return ;
 	node->f.data.d.magic = MAGIC;
-	node->f.data.d.size = size_meta;
+	node->f.data.d.size = size;
 	node->f.next = NULL;
 	if (g_flist == NULL) {
 		g_flist = node;

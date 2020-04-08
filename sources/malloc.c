@@ -20,16 +20,11 @@ void			*my_malloc(size_t size) {
 }
 
 int				main(void) {
-	char *ptr = my_malloc(10);
-	char *ptr2 = my_malloc(5000);
-	char *ptr3 = my_malloc(15000);
-	ptr[0] = 'a';
-	ptr[1] = 'b';
-	ptr[2] = '\0';
-	ptr2[0] = 'P';
-	ptr3[0] = 'a';
-	ptr3[1] = 'b';
-	ptr3[2] = '\0';
-	printf("ptr1: %s\nptr2: %s\nptr3: %s\n", ptr, ptr2, ptr3);
+	void *ptr = my_malloc(10);
+	(void)ptr;
+	my_free(ptr);
+	ptr = my_malloc(5);
+	void *ptr2 = my_malloc(10);
+	(void)ptr2;
 	return  0;
 }

@@ -10,8 +10,7 @@ void			*my_malloc(size_t size) {
 	if (size <= 0)
 		return NULL;
 	ptr = NULL;
-	// I guess the free list doesnt work
-	if((ptr = find_available_memory_chunk(size)) == NULL) {
+	if ((ptr = find_available_memory_chunk(size)) == NULL) {
 		if ((ptr = allocate_new_block(size)) == NULL)
 			return NULL;
 	}
@@ -23,8 +22,6 @@ int				main(void) {
 	void *ptr = my_malloc(10);
 	(void)ptr;
 	my_free(ptr);
-	ptr = my_malloc(5);
-	void *ptr2 = my_malloc(10);
-	(void)ptr2;
+	ptr = my_malloc(15);
 	return  0;
 }

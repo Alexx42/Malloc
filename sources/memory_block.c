@@ -37,7 +37,7 @@ m_block			*find_corresponding_block(void *ptr) {
 
 	tmp = g_block;
 	while (tmp) {
-		if (ptr > (void *)tmp && ptr < (void *)tmp + tmp->h_block.size)
+		if (ptr >= (void *)tmp && ptr <= (void *)tmp + tmp->h_block.size)
 			return tmp;
 		tmp = tmp->h_block.next;
 	}

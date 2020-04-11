@@ -3,7 +3,8 @@ ifeq ($(HOSTTYPE),)
 endif
 
 
-SRCS = $(addprefix sources/, malloc.c memory_block.c debug.c memory_chunk.c union_operations.c)
+SRCS = $(addprefix sources/, malloc.c memory_block.c debug.c \
+					memory_chunk.c union_operations.c free.c)
 OBJ = $(SRCS:.c=.o)
 
 NAME = libft_malloc_$(HOSTTYPE).so
@@ -11,7 +12,7 @@ PROG = prog
 
 LINK = libft_malloc.so
 
-FLAGS = -Wall -Werror -Wextra -g3 -finline-functions -fPIC
+FLAGS = -Wall -Werror -Wextra -g3 -finline-functions -fPIC -O3
 
 INCLUDES = -I ./includes/
 

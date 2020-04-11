@@ -19,9 +19,5 @@ void			*my_malloc(size_t size) {
 }
 
 int				main(void) {
-	void *ptr = my_malloc(10);
-	(void)ptr;
-	my_free(ptr);
-	ptr = my_malloc(15);
 	return  0;
 }

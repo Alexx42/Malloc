@@ -13,7 +13,7 @@ void			*write_meta_data(void *ptr, size_t size) {
 	m_block		*block;
 
 	block = find_corresponding_block(ptr);
-	block->h_block.used += S_ALLOC(f_list) + size;
+	block->h_block.used = block->h_block.used + S_ALLOC(f_list) + size;
 	delete_element_f_list(ptr);
 	tmp = (f_list *)ptr;
 	tmp->f.data.d.size = size;

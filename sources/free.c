@@ -12,7 +12,6 @@ void	my_free(void *ptr) {
 	while ((void *)tmp < (void *)b + b->h_block.size) {
 		if ((void *)tmp + S_ALLOC(f_list) == ptr) {
 			add_element_f_list((void *)tmp, tmp->f.data.d.size);
-			b->h_block.used -= tmp->f.data.d.size;
 			return ;
 		}
 		k += (S_ALLOC(f_list) + tmp->f.data.d.size);

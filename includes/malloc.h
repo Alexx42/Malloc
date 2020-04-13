@@ -77,4 +77,7 @@ void					delete_element_f_list(void *ptr);
 void					add_element_f_list(void *ptr, size_t size);
 
 
-int							valid_current_block(m_block *block, size_t size);
+int						valid_current_block(m_block *block, size_t size);
+
+extern void				*malloc(size_t size);
+extern void				free(void  *ptr);

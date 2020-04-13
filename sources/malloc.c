@@ -3,8 +3,7 @@
 m_block			*g_block = NULL;
 f_list			*g_flist = NULL;
 
-
-void			*my_malloc(size_t size) {
+void			*malloc(size_t size) {
 	void	*ptr;
 
 	if (size <= 0)
@@ -14,10 +13,5 @@ void			*my_malloc(size_t size) {
 		if ((ptr = allocate_new_block(size)) == NULL)
 			return NULL;
 	}
-	dump_block();
 	return ptr;
-}
-
-int				main(void) {
-	return  0;
 }

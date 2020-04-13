@@ -14,7 +14,7 @@ void			*write_meta_data(void *ptr, size_t size) {
 
 	block = find_corresponding_block(ptr);
 	block->h_block.used = block->h_block.used + S_ALLOC(f_list) + size;
-	delete_element_f_list(ptr);
+ 	delete_element_f_list(ptr);
 	tmp = (f_list *)ptr;
 	tmp->f.data.d.size = size;
 	tmp->f.data.d.magic = MAGIC;

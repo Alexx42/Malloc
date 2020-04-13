@@ -1,6 +1,6 @@
 #include "../includes/malloc.h"
 
-void	my_free(void *ptr) {
+void	free(void *ptr) {
 	f_list		*tmp;
 	m_block		*b;
 	int			k;

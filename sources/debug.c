@@ -1,5 +1,16 @@
 #include "../includes/malloc.h"
 
+static int	is_in_f_list(void *ptr) {
+	f_list *tmp = g_flist;
+	
+	while (tmp) {
+		if ((void *)tmp == ptr)
+			return EXIT_SUCCESS;
+		tmp = tmp->f.next;
+	}
+	return  EXIT_FAILURE;
+}
+
 void		dump_block(void) {
 	int			i;
 	int			j;
@@ -17,7 +28,7 @@ void		dump_block(void) {
 		k = 0;
 		if (b == find_corresponding_block((void *)tmp)) {
 			while ((void *)tmp < (void *)b + b->h_block.size) {
-				if (tmp->f.data.d.magic == MAGIC) {
+				if (tmp->f.data.d.magic == MAGIC && is_in_f_list((void *)tmp) == EXIT_FAILURE) {
 					printf("\tCHUNCK %d: \n", ++j);
 					printf("\t\tSize: %zu bytes\n", tmp->f.data.d.size);
 				} 
